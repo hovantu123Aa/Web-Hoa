@@ -12,6 +12,18 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>controller.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>controller.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TK</servlet-name>
+        <servlet-class>TK</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TaiKhoan</servlet-name>
+        <servlet-class>dao.TaiKhoan</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProductManagement</servlet-name>
         <url-pattern>/ProductManagement</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TK</servlet-name>
+        <url-pattern>/TK</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TaiKhoan</servlet-name>
+        <url-pattern>/TaiKhoan</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

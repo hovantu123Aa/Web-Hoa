@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dao.TaiKhoanDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -11,12 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.TaiKhoan;
 
 /**
  *
  * @author ADMIN
  */
-public class Login extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,18 +32,18 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         String username=request.getParameter("username");
-        String password=request.getParameter("password");
-        
-        if(username.equalsIgnoreCase("Admin")&& password.equals("admin"))
+        String password =request.getParameter("password");
+        TaiKhoanDao tkDao=new TaiKhoanDao();
+        TaiKhoan tk=tkDao.DangNhap(username, password);
+        if(username.equalsIgnoreCase("admin") && password.equals("admin"))
+            {
+                HttpSession session=request.getSession();
+                session.setAttribute("username", username);
+                response.sendRedirect("home.jsp");
+            }else
         {
-          HttpSession session=request.getSession();
-          session.setAttribute("username", username);
-          response.sendRedirect("home.jsp");
-        }else
-        {
-            request.setAttribute("error", "Đăng nhâp không thành công do sai tên đăng nhập hoặc mật khẩu");
+            request.setAttribute("error", "đăng nhập thất bại");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
