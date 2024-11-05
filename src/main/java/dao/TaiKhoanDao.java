@@ -18,14 +18,14 @@ public class TaiKhoanDao {
     Connection conn;
     PreparedStatement ps;
     ResultSet rs;
-    public TaiKhoan DangNhap( String tênĐN, String MK)
+    public TaiKhoan DangNhap( String tendN, String MK)
     {   
         TaiKhoan kq = null;
-        String sql="select* from TaiKhoan where TenĐN=? and MK=?";
+        String sql="select * from TK where tendN=? and MK=?";
         conn =DbContext.getConnection();
         try {
             ps=conn.prepareStatement(sql);
-            ps.setString(1, tênĐN);
+            ps.setString(1, tendN);
             ps.setString(2, MK);
             rs=ps.executeQuery();
             if(rs.next()) {

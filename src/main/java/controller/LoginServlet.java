@@ -32,17 +32,15 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username=request.getParameter("username");
-        String password =request.getParameter("password");
-        TaiKhoanDao tkDao=new TaiKhoanDao();
-        TaiKhoan tk=tkDao.DangNhap(username, password);
-        if(username.equalsIgnoreCase("admin") && password.equals("admin"))
-            {
-                HttpSession session=request.getSession();
-                session.setAttribute("username", username);
-                response.sendRedirect("home.jsp");
-            }else
-        {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        TaiKhoanDao tkDao = new TaiKhoanDao();
+        TaiKhoan tk = tkDao.DangNhap(username, password);
+        if (tk != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("username", username);
+            response.sendRedirect("home.jsp");
+        } else {
             request.setAttribute("error", "đăng nhập thất bại");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
