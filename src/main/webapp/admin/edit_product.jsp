@@ -21,7 +21,7 @@
     %>
     
     <h2>Cập nhật sản phẩm (Hoa)</h2>    
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="mb-2">
             <label>Tên hoa</label>
             <input type="text" name="tenhoa" value="<%=hoa.getTenhoa()%>" class="form-control" required="" />
@@ -33,7 +33,7 @@
         <div class="mb-2">
             <label>Hình ảnh</label>
             <input type="file" name="hinh" value="" class="form-control" />
-            <img src="assets/images/products<%=hoa.getHinh()%>" width="150px"/>
+            <img src="assets/images/products/<%=hoa.getHinh()%>" width="150px"/>
             <input type="hidden" name="oldImg" value="<%=hoa.getHinh()%>">
         </div>
          <div class="mb-2">
